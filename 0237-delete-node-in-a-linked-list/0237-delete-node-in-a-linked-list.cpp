@@ -13,12 +13,11 @@ public:
             if (!node -> next -> next) {
                 node -> val = node -> next -> val;
                 node -> next = NULL;
-                node = node -> next;
-                continue;
             }
             if (node && node -> next) {
                 node -> val = node -> next -> val;
             }
+            
             node = node -> next;
         }
     }
