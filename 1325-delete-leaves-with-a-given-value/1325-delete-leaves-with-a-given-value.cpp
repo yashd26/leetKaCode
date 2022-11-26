@@ -12,15 +12,14 @@
 class Solution {
 public:
     TreeNode* removeLeafNodes(TreeNode* root, int target) {
-        if (root -> left) {
-            TreeNode *tempNode = removeLeafNodes(root -> left, target);
-            root -> left = tempNode;
+        if (!root) {
+            return NULL;
         }
-        if (root -> right) {
-            TreeNode *tempNode = removeLeafNodes(root -> right, target);
-            root -> right = tempNode;
-        }
-        if (!root -> right && !root -> left && root -> val == target) {
+        
+        root -> left = removeLeafNodes(root -> left, target);
+        root -> right = removeLeafNodes(root -> right, target);
+        
+        if (root -> val == target && !root -> right && !root -> left) {
             return NULL;
         }
         
