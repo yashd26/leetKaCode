@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool helper(vector<int>& nums, int idx, vector<int>& dp) {
+    bool helper(int idx, vector<int>& nums, vector<int>& dp) {
         if (idx == nums.size() - 1) {
             return true;
         }
@@ -12,7 +12,7 @@ public:
         }
         
         for(int i = 1; i <= nums[idx]; ++i) {
-            if (helper(nums, idx + i, dp)) {
+            if (helper(idx + i, nums, dp)) {
                 return dp[idx + i] = true;
             }
         }
@@ -22,6 +22,7 @@ public:
     
     bool canJump(vector<int>& nums) {
         vector<int> dp(nums.size(), -1);
-        return helper(nums, 0, dp);
+        
+        return helper(0, nums, dp);
     }
 };
